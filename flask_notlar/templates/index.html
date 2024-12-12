@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Mevcut Notlar</h2>
+{% if notlar %}
+<ul>
+    {% for note in notlar %}
+    <li>
+        <strong>{{ note.baslik }}</strong>: {{ note.icerik }}
+        <a href="{{ url_for('delete_note', note_id=loop.index0) }}">Sil</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Henüz hiç not eklenmemiş.</p>
+{% endif %}
+{% endblock %}
